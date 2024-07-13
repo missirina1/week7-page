@@ -1,0 +1,238 @@
+.wrapper {
+  display: grid;
+  grid-template: minmax(9vh, auto) 1fr minmax(20vh, auto) / 1fr;
+  grid-template-areas:
+    "header"
+    "main"
+    "footer";
+  width: 100%;
+  height: 100vh;
+}
+/* Шапка */
+
+.header {
+  grid-area: header;
+  background-color: rgba(255, 255, 255, 1);
+  padding: 0 5%;
+  display: grid;
+  grid-template: 1fr / 20% 1fr;
+  align-items: center;
+  justify-items: end;
+}
+.header_logo {
+  grid-column: 1;
+  margin-right: 5rem;
+}
+.header_logo img {
+  width: 150%;
+}
+
+.header_menu {
+  grid-column: 2/3;
+}
+.header_list {
+  list-style-type: none;
+  color: rgba(74, 85, 108, 1);
+  display: grid;
+  grid-auto-flow: column;
+  justify-items: end;
+  column-gap: 3rem;
+  align-items: center;
+}
+.header_link {
+  text-decoration: none;
+  color: rgba(74, 85, 108, 1);
+  font-size: 1.2rem;
+}
+
+.header_button {
+  background-color: rgba(32, 173, 150, 1);
+  color: rgba(255, 255, 255, 1);
+  border-width: 0rem;
+  border-radius: 1rem;
+  width: max-content;
+  height: max-content;
+  padding: 1rem;
+  font-size: 1.2rem;
+}
+.header_burger {
+  display: none;
+}
+
+/* Основной блок */
+.content {
+  background-color: rgba(250, 248, 246, 1);
+  height: auto;
+  width: 100%;
+  grid-area: main;
+  padding: 5rem 3rem 0 5rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 20% min-content min-content;
+  column-gap: 2rem;
+  align-items: start;
+  justify-self: start;
+}
+.photo {
+  grid-column: 2/3;
+  padding: 5rem 3rem 0 5rem;
+}
+.photo img {
+  width: 90%;
+  object-fit: cover;
+}
+
+.content_title {
+  grid-column: 1/2;
+  grid-row: 2/3;
+  color: rgba(51, 52, 97, 1);
+  font-size: 5rem;
+  font-weight: bold;
+}
+.title_p {
+  width: 70%;
+  grid-column: 1/2;
+  grid-row: 3;
+  color: rgba(74, 85, 108, 1);
+  font-size: 2rem;
+}
+.main_button {
+  grid-column: 1/2;
+  grid-row: 4/5;
+  padding: 1.5rem;
+  width: max-content;
+  height: max-content;
+  background-color: rgba(32, 173, 150, 1);
+  color: rgba(255, 255, 255, 1);
+  border-width: 0;
+  border-radius: 1rem;
+  font-size: 2rem;
+}
+
+/* Подвал */
+.footer {
+  grid-area: footer;
+  background-color: rgba(255, 255, 255, 1);
+  display: grid;
+  grid-template:
+    minmax(100px, auto) minmax(96px, auto) minmax(56px, auto) minmax(48px, auto)
+    / 1fr;
+  align-items: end;
+  padding: 0 5rem 0 5rem;
+}
+.footer_p {
+  color: rgba(102, 112, 133, 1);
+  font-size: 1.5rem;
+  text-align: center;
+}
+.footer_gallery {
+  display: grid;
+  grid-template-columns: repeat(5, auto);
+  column-gap: 5rem;
+  align-items: end;
+}
+
+@media (max-width: 768px) {
+  .header_menu {
+    display: none;
+  }
+  .header {
+    display: flex;
+    justify-content: space-between;
+  }
+  .header_logo {
+    height: auto;
+  }
+  .header_logo img {
+    width: 200%;
+  }
+
+  .header_burger {
+    display: block;
+    position: relative;
+    width: 50px;
+    height: 50px;
+    background-color: rgb(32, 173, 149);
+    border-radius: 25%;
+  }
+  .header_burger span {
+    position: absolute;
+    background-color: rgb(242, 248, 248);
+    left: 25%;
+    width: 50%;
+    height: 3px;
+    top: 49%;
+  }
+  .header_burger:before,
+  .header_burger:after {
+    content: " ";
+    background-color: rgba(252, 252, 252, 0.872);
+    position: absolute;
+    width: 50%;
+    height: 3px;
+    left: 25%;
+  }
+  .header_burger:before {
+    top: 20%;
+  }
+  .header_burger:after {
+    bottom: 20%;
+  }
+
+  .content {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto auto auto;
+    justify-items: center;
+  }
+  .photo {
+    grid-column: 1 / 2;
+    margin-bottom: 2rem;
+  }
+  .title_p {
+    text-align: center;
+  }
+  .main_button {
+    margin-bottom: 2rem;
+  }
+  .footer {
+    padding-top: 10%;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .footer_p {
+    display: flex;
+  }
+  .footer_gallery {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .header_logo {
+    justify-content: center;
+    margin-bottom: 1rem;
+  }
+
+  .header_list {
+    grid-auto-flow: row;
+    justify-content: center;
+  }
+
+  .content_title {
+    font-size: 1.5rem;
+  }
+
+  .title_p,
+  .main_button {
+    font-size: 0.875rem;
+  }
+}
